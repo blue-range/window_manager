@@ -110,6 +110,8 @@ class WindowManager {
   void WindowManager::SetIcon(const flutter::EncodableMap& args);
   bool WindowManager::HasShadow();
   void WindowManager::SetHasShadow(const flutter::EncodableMap& args);
+  bool WindowManager::Protected();
+  void WindowManager::SetProtected(const flutter::EncodableMap& args);
   double WindowManager::GetOpacity();
   void WindowManager::SetOpacity(const flutter::EncodableMap& args);
   void WindowManager::SetBrightness(const flutter::EncodableMap& args);
