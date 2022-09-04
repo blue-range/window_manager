@@ -44,7 +44,8 @@ class WindowManager {
   HWND native_window;
 
   int last_state = STATE_NORMAL;
-
+//adin
+  bool protected = true;
   bool has_shadow_ = false;
   bool is_frameless_ = false;
   bool is_prevent_close_ = false;
@@ -756,6 +757,14 @@ void WindowManager::SetHasShadow(const flutter::EncodableMap& args) {
 
     DwmExtendFrameIntoClientArea(hWnd, &margins[has_shadow_]);
   }
+}
+void WindowManager::SetProtected(const flutter::EncodableMap& args) {
+    protected = std::get<bool>(args.at(flutter::EncodableValue("protected")));
+
+    HWND hWnd = GetMainWindow();
+
+
+    SetWindowDisplayAffinity(hWnd, protected);
 }
 
 double WindowManager::GetOpacity() {
