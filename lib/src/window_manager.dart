@@ -559,6 +559,23 @@ class WindowManager {
     await _channel.invokeMethod('setHasShadow', arguments);
   }
 
+  /// Returns `bool` - Whether the window has a shadow. On Windows, always returns true unless window is frameless.
+  ///
+  /// @platforms macos,windows
+  Future<bool> isProtected() async {
+    return await _channel.invokeMethod('isProtected');
+  }
+
+  /// Sets whether the window should have a shadow. On Windows, doesn't do anything unless window is frameless.
+  ///
+  /// @platforms macos,windows
+  Future<void> setProtected(bool isProtected) async {
+    final Map<String, dynamic> arguments = {
+      'isProtected': isProtected,
+    };
+    await _channel.invokeMethod('setProtected', arguments);
+  }
+
   /// Returns `double` - between 0.0 (fully transparent) and 1.0 (fully opaque).
   Future<double> getOpacity() async {
     return await _channel.invokeMethod('getOpacity');

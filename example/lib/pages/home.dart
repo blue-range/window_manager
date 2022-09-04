@@ -49,6 +49,7 @@ class _HomePageState extends State<HomePage> with TrayListener, WindowListener {
   bool _isSkipTaskbar = false;
   double _progress = 0;
   bool _hasShadow = true;
+  bool _isProtected = true;
   double _opacity = 1;
   bool _isIgnoreMouseEvents = false;
   String _iconType = _kIconTypeOriginal;
@@ -762,6 +763,21 @@ class _HomePageState extends State<HomePage> with TrayListener, WindowListener {
               onChanged: (newValue) {
                 _hasShadow = newValue;
                 windowManager.setHasShadow(_hasShadow);
+                setState(() {});
+              },
+            ),
+            PreferenceListSwitchItem(
+              title: Text('isProtected / setProtected'),
+              onTap: () async {
+                bool isProtected = await windowManager.isProtected();
+                BotToast.showText(
+                  text: 'isProtected: $isProtected',
+                );
+              },
+              value: _isProtected,
+              onChanged: (newValue) {
+                _isProtected = newValue;
+                windowManager.setProtected(_isProtected);
                 setState(() {});
               },
             ),
