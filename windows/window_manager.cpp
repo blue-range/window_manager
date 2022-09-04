@@ -45,7 +45,7 @@ class WindowManager {
 
   int last_state = STATE_NORMAL;
 //adin
-  bool protected = true;
+  bool is_protected = true;
   bool has_shadow_ = false;
   bool is_frameless_ = false;
   bool is_prevent_close_ = false;
@@ -110,7 +110,7 @@ class WindowManager {
   void WindowManager::SetIcon(const flutter::EncodableMap& args);
   bool WindowManager::HasShadow();
   void WindowManager::SetHasShadow(const flutter::EncodableMap& args);
-  bool WindowManager::Protected();
+  bool WindowManager::isProtected();
   void WindowManager::SetProtected(const flutter::EncodableMap& args);
   double WindowManager::GetOpacity();
   void WindowManager::SetOpacity(const flutter::EncodableMap& args);
@@ -761,12 +761,12 @@ void WindowManager::SetHasShadow(const flutter::EncodableMap& args) {
   }
 }
 void WindowManager::SetProtected(const flutter::EncodableMap& args) {
-    protected = std::get<bool>(args.at(flutter::EncodableValue("protected")));
+    is_protected = std::get<bool>(args.at(flutter::EncodableValue("isProtected")));
 
     HWND hWnd = GetMainWindow();
 
 
-    SetWindowDisplayAffinity(hWnd, protected);
+    SetWindowDisplayAffinity(hWnd, is_protected);
 }
 
 double WindowManager::GetOpacity() {
