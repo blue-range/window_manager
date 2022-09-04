@@ -760,6 +760,10 @@ void WindowManager::SetHasShadow(const flutter::EncodableMap& args) {
     DwmExtendFrameIntoClientArea(hWnd, &margins[has_shadow_]);
   }
 }
+
+bool WindowManager::isProtected() {
+    return is_protected;
+}
 void WindowManager::SetProtected(const flutter::EncodableMap& args) {
     is_protected = std::get<bool>(args.at(flutter::EncodableValue("isProtected")));
 
