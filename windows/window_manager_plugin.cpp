@@ -481,7 +481,7 @@ void WindowManagerPlugin::HandleMethodCall(
     window_manager->SetHasShadow(args);
     result->Success(flutter::EncodableValue(true));
   } else if (method_name.compare("isProtected") == 0) {
-    bool value = window_manager->Protected();
+    bool value = window_manager->isProtected();
     result->Success(flutter::EncodableValue(value));
   } else if (method_name.compare("setProtected") == 0) {
     const flutter::EncodableMap& args =
